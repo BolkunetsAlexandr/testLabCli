@@ -4,8 +4,8 @@
   </div>
   <div class="container navmenu">
     <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-secondary">ГЛАВНАЯ</button>
-      <button type="button" [routerLink]="[{ outlets: { userRouter: ['/methodics'] } }]" class="btn btn-secondary">МЕТОДИКИ</button>
+      <button type="button" routerLink='mainpage' class="btn btn-secondary">ГЛАВНАЯ</button>
+      <button type="button" routerLink='methodics' class="btn btn-secondary">МЕТОДИКИ</button>
       <button type="button" class="btn btn-secondary">КОНТАКТЫ</button>
       <button type="button" class="btn btn-secondary">ДОКУМЕНТЫ</button>
     </div>
@@ -21,6 +21,5 @@
     </div>
   </div>
 </nav>
-<router-outlet name="userRouter"></router-outlet>
-
+<router-outlet></router-outlet>
 

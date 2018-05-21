@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
-import {Credentials} from '../../model/credentials';
+import {Credentials} from '../../domain/credentials';
 import {RouteService} from '../../services/routeservice.service';
 
 declare var $: any;
@@ -14,10 +14,9 @@ export class AuthComponent implements OnInit {
   private credentials: Credentials = {
      login : '',
      password : ''
-  }
+  };
   constructor(private authService: AuthService,
               private routerService: RouteService) { }
-
   ngOnInit() {
     this.routerService.forwardToWorkspace();
   }
