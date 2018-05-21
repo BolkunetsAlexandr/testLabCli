@@ -1,0 +1,52 @@
+section {
+  padding: 60px 0;
+}
+
+section .section-title {
+  text-align: center;
+  color: #c0dfd9;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+#tabs{
+  background: #c0dfd9;
+  color: #3B3A36;
+}
+#tabs h6.section-title{
+  color: #3B3A36;
+}
+
+#tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: #3B3A36;
+  background-color: transparent;
+  border-color: transparent transparent #3B3A36;
+  border-bottom: 4px solid !important;
+  font-size: 20px;
+  font-weight: bold;
+}
+#tabs .nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  color: #3B3A36;
+  font-size: 20px;
+}
+.navmenu {
+  padding: 10px;
+  min-width: 100%;
+  border-radius: 3px;
+  background-color: #c0dfd9;
+  box-shadow: 1px 0px 100px 0px #8FB3E3;
+}
+
+.boxshadow {
+  box-shadow: 3px 0px 10px 0px #8FB3E3
+}
+
+
+.navmenu:hover {
+}
+
+#brandName {
+  margin: auto;
+}

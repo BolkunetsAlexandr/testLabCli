@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <div class="container">
+    <h1>Добро пожаловать</h1>
+    <form class="form">
+      <input type="text" [(ngModel)]="credentials.login" placeholder="Логин" [ngModelOptions]="{standalone: true}">
+      <input type="password" [(ngModel)]="credentials.password" placeholder="Пароль" [ngModelOptions]="{standalone: true}">
+      <button type="submit" (click)="logIn()" id="login-button">Войти</button>
+    </form>
+  </div>
+
+  <ul class="bg-bubbles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>

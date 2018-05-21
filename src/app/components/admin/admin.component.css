@@ -1,0 +1,19 @@
+.navmenu {
+  padding: 10px;
+  min-width: 100%;
+  border-radius: 3px;
+  background-color: #c0dfd9;
+  box-shadow: 1px 0px 100px 0px #8FB3E3;
+}
+
+.boxshadow {
+  box-shadow: 3px 0px 10px 0px #8FB3E3
+}
+
+
+.navmenu:hover {
+}
+
+#brandName {
+  margin: auto;
+}

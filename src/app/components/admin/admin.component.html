@@ -1,0 +1,24 @@
+<nav class="navbar navbar-dark bg-dark fixed-top boxshadow">
+  <div class="container">
+    <span id="brandName" class="text-white a"><b>ВИРТУАЛЬНАЯ ПСИХОДИАГНОСТИЧЕСКАЯ ЛАБОРАТОРИЯ</b></span>
+  </div>
+  <div class="container navmenu">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-secondary">ГЛАВНАЯ</button>
+      <button type="button" class="btn btn-secondary" [routerLink]="['/admin/workspace','methodics']">МЕТОДИКИ</button>
+      <button type="button" class="btn btn-secondary">КОНТАКТЫ</button>
+      <button type="button" class="btn btn-secondary">ДОКУМЕНТЫ</button>
+    </div>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        ПРОФИЛЬ
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="/" (click)="logoutClick()">ВЫЙТИ</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
