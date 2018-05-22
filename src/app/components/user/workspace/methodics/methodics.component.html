@@ -10,7 +10,7 @@
 
   <button (click)="getMethodics()">fghjkljhgtry</button>
   <ul *ngIf="openMethodics">
-    <li *ngFor="let methodics of openMethodics">{{ methodics["name"] }}}</li>
+    <li routerLink="startMethodics/{{methodics.id}}" *ngFor="let methodics of openMethodics">{{ methodics["name"] }}</li>
   </ul>
 </ul>
 </div>

@@ -3,21 +3,21 @@ import {HttpHeaders} from '@angular/common/http';
 
 export class HeadersContainer {
   static getContentTypeHeader(): HttpHeaders {
-    const headers = new HttpHeaders();
-    headers.set('Content-type', 'application/json');
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-type', 'application/json');
     return headers;
   }
 
   static getTokenHeader(): HttpHeaders {
-    const headers = new HttpHeaders();
-    headers.set('Authorization', 'Bearer ' + localStorage.getItem(StorageKey.TOKEN));
+    let  headers = new HttpHeaders();
+    headers = headers.set('Authorization', 'Bearer ' + localStorage.getItem(StorageKey.TOKEN));
     return headers;
   }
 
   static getTokenAndJsonTypeHeaders(): HttpHeaders {
-    const headers = new HttpHeaders();
-    headers.set('Content-type', 'application/json');
-    headers.set('Authorization', 'Bearer ' + localStorage.getItem(StorageKey.TOKEN));
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-type', 'application/json');
+    headers = headers.set('Authorization', 'Bearer ' + localStorage.getItem(StorageKey.TOKEN));
     return headers;
   }
 }

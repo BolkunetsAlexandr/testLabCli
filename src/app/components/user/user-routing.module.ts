@@ -6,11 +6,13 @@ import {UserComponent} from './workspace/user.component';
 import {UsermainpageComponent} from './workspace/usermainpage/usermainpage.component';
 import {HttpClient} from '@angular/common/http';
 import {UsermethodicsService} from './services/usermethodics.service';
+import {StartMethodicsComponent} from './workspace/startmethodics/startmethodics.component';
 
 const routes: Routes = [
   {path: '', component: UserComponent, children: [
      {path: 'mainpage', component : UsermainpageComponent},
-     {path: 'methodics', component : MethodicsComponent}
+     {path: 'methodics', component : MethodicsComponent},
+     {path: 'methodics/startMethodics/:id', component: StartMethodicsComponent}
    ]
   }];
 @NgModule({
@@ -21,7 +23,7 @@ const routes: Routes = [
   exports: [
     RouterModule
   ],
-  declarations: [UserComponent, UsermainpageComponent, MethodicsComponent],
+  declarations: [UserComponent, UsermainpageComponent, MethodicsComponent, StartMethodicsComponent],
   providers: [UsermethodicsService]
 })
 export class UserRoutingModule { }

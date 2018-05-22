@@ -12,6 +12,7 @@ import {UserHolderService} from './services/userholder.service';
 import {UserRoutingModule} from './components/user/user-routing.module';
 import {AdminRoutingModule} from './components/admin/admin-routing.module';
 import {AppRoutingModule} from './/app-routing.module';
+import { StartMethodicsComponent } from './components/user/workspace/startmethodics/startmethodics.component';
 
 @NgModule({
   declarations: [

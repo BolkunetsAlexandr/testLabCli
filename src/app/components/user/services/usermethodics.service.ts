@@ -11,8 +11,11 @@ export class UsermethodicsService {
   constructor(private httpClient: HttpClient) { }
 
   public getAvailableMethodics(): Observable<any> {
-    const headers = new HttpHeaders({'Content-type' : 'application/json', 'Authorization' : 'Bearer ' + localStorage.getItem(StorageKey.TOKEN)});
-    return this.httpClient.get<any>(ApiSetting.API_ENDPOINT_URL + '/methodics/description/open', {headers : headers});
+    return this.httpClient.get<any>(ApiSetting.API_ENDPOINT_URL + '/methodics/description/open', {headers : HeadersContainer.getTokenHeader()});
+  }
+
+  public getMethodicsById(id: string): Observable<any> {
+    return this.httpClient.get<any>(ApiSetting.API_ENDPOINT_URL + '/methodics/get/' + id, {headers : HeadersContainer.getTokenHeader()});
   }
 
 }
