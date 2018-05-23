@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {DescriptionMethodics} from '../../../../domain/methodics/descriptionMethodics';
-import {UsermethodicsService} from '../../services/usermethodics.service';
+import {UserMethodicsService} from '../../services/usermethodics.service';
 import {Router} from '@angular/router';
+import {LoadingPictureController} from '../../../../services/loadingPictureController';
 
 @Component({
   selector: 'app-methodics',
@@ -10,15 +11,21 @@ import {Router} from '@angular/router';
 })
 export class MethodicsComponent implements OnInit {
 
+  errorMessage: string;
   openMethodics: DescriptionMethodics[];
-  constructor(private methodicsService: UsermethodicsService,
+  constructor(private methodicsService: UserMethodicsService,
               private router: Router) { }
 
   ngOnInit() {
+    this.getMethodics();
   }
 
   getMethodics() {
-    this.methodicsService.getAvailableMethodics().subscribe(x => this.openMethodics = x);
+    LoadingPictureController.startLoadingPicture()
+    this.methodicsService.getAvailableMethodics().subscribe(x => {
+      this.openMethodics = x;
+      LoadingPictureController.stopLoadingPicture();
+      });
   }
 
   startMethodics(id) {

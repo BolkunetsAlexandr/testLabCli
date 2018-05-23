@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {UsermethodicsService} from '../../services/usermethodics.service';
+import {UserMethodicsService} from '../../services/usermethodics.service';
 import {MethodicsWithQuestions} from '../../../../domain/methodics/methodicsWithQuestions';
-
-declare var $: any;
+import {LoadingPictureController} from '../../../../services/loadingPictureController';
+import {Question} from '../../../../domain/methodics/questions';
+import {PassingTest} from '../../../../domain/methodics/passingTest';
+import {AnswerQuestion} from '../../../../domain/methodics/answerQuestion';
 
 @Component({
   selector: 'app-startmethodics',
@@ -13,20 +15,59 @@ declare var $: any;
 export class StartMethodicsComponent implements OnInit {
 
   private methodicsStarting: MethodicsWithQuestions;
+  private answerValues: number[];
+  private errorMessage: string;
+  private successMessage: string;
 
   constructor(private currentRouterState: ActivatedRoute,
-              private methodicsService: UsermethodicsService) { }
-
+              private methodicsService: UserMethodicsService) { }
+  private createRangeArray(start: number, end: number) {
+     return Array.from({length: (end - start)}, (v, k) => k + start);
+  }
   ngOnInit() {
     const id: string = this.currentRouterState.snapshot.paramMap.get('id');
     console.log(id);
-    $('#spinnerball').removeClass();
+    LoadingPictureController.startLoadingPicture();
     this.methodicsService.getMethodicsById(id).subscribe(
       x => {
         this.methodicsStarting = x;
-        $('#spinnerball').addClass('no_display'); },
-       $('#spinnerball').addClass('no_display')
+        this.answerValues = this.createRangeArray(Number.parseInt(x['leftValueBorder']), Number.parseInt(x['rightValueBorder'] + 1));
+        LoadingPictureController.stopLoadingPicture(); }
     );
   }
 
+  selectValue(question: Question, value: number) {
+    question.resultValue = value;
+  }
+  sendMethodics() {
+    if (this.validateMethodics()) {
+
+      const answers: AnswerQuestion[] = [];
+      for (const answer: Question of Object.keys(this.methodicsStarting.questions)) {
+         answers.push(
+           {
+              questionNumber: answer.number,
+              value: answer.resultValue
+           }
+         );
+      }
+
+      const passFact: PassingTest = {
+        methodicsId: this.methodicsStarting.id,
+        answers: answers
+      }
+      this.methodicsService.sendResultMethodics(passFact, x => this.successMessage = x);
+      this.errorMessage = null;
+    } else {
+      this.errorMessage = 'Ошибка. Остались неотвеченные вопросы';
+    }
+  }
+  validateMethodics(): boolean {
+    for (const answer: Question in this.methodicsStarting.questions) {
+      if (!answer.resultValue) {
+        return false;
+      }
+    }
+    return true;
+  }
 }

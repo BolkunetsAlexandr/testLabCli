@@ -5,7 +5,7 @@ import {MethodicsComponent} from './workspace/methodics/methodics.component';
 import {UserComponent} from './workspace/user.component';
 import {UsermainpageComponent} from './workspace/usermainpage/usermainpage.component';
 import {HttpClient} from '@angular/common/http';
-import {UsermethodicsService} from './services/usermethodics.service';
+import {UserMethodicsService} from './services/usermethodics.service';
 import {StartMethodicsComponent} from './workspace/startmethodics/startmethodics.component';
 
 const routes: Routes = [
@@ -24,6 +24,6 @@ const routes: Routes = [
     RouterModule
   ],
   declarations: [UserComponent, UsermainpageComponent, MethodicsComponent, StartMethodicsComponent],
-  providers: [UsermethodicsService]
+  providers: [UserMethodicsService]
 })
 export class UserRoutingModule { }

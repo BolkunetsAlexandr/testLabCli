@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {Credentials} from '../../domain/credentials';
 import {RouteService} from '../../services/routeservice.service';
+import {LoadingPictureController} from '../../services/loadingPictureController';
 
 declare var $: any;
 
@@ -21,9 +22,9 @@ export class AuthComponent implements OnInit {
     this.routerService.forwardToWorkspace();
   }
   logIn() {
-    $('#spinnerball').removeClass();
+    LoadingPictureController.startLoadingPicture();
     this.authService.login(this.credentials['login'], this.credentials['password'], () => {
-      $('#spinnerball').addClass('no_display');
+      LoadingPictureController.stopLoadingPicture();
       this.routerService.forwardToWorkspace();
     });
   }

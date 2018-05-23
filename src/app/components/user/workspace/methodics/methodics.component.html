@@ -1,16 +1,11 @@
 <div class="container-fluid">
-<ul>
-  <li>ADSSADAS</li>
-  <li>ADSSADAS</li>
-  <li>ADSSADAS</li>
-  <li>ADSSADAS</li>
-  <li>ADSSADAS</li><li>ADSSADAS</li><li>ADSSADAS</li><li>ADSSADAS</li>
-  <li>ADSSADAS</li>
-  <li>ADSSADAS</li>
-
-  <button (click)="getMethodics()">fghjkljhgtry</button>
-  <ul *ngIf="openMethodics">
-    <li routerLink="startMethodics/{{methodics.id}}" *ngFor="let methodics of openMethodics">{{ methodics["name"] }}</li>
-  </ul>
-</ul>
+  <div class="alert alert-warning" role="alert" *ngIf="errorMessage">
+    <strong>Warning!</strong> {{errorMessage}}}
+  </div>
+  <span>Список доступных методик: </span>
+  <div class="list-group">
+    <a routerLink="startMethodics/{{methodics.id}}" *ngFor="let methodics of openMethodics; let i = index"  class="list-group-item">
+      {{i+1}}. {{ methodics.name }}
+    </a>
+  </div>
 </div>
