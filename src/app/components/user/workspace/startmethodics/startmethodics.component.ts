@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserMethodicsService} from '../../services/usermethodics.service';
 import {MethodicsWithQuestions} from '../../../../domain/methodics/methodicsWithQuestions';
 import {LoadingPictureController} from '../../../../services/loadingPictureController';
@@ -19,7 +19,8 @@ export class StartMethodicsComponent implements OnInit {
   private errorMessage: string;
   private successMessage: string;
 
-  constructor(private currentRouterState: ActivatedRoute,
+  constructor(private router: Router,
+              private currentRouterState: ActivatedRoute,
               private methodicsService: UserMethodicsService) { }
   private createRangeArray(start: number, end: number) {
      return Array.from({length: (end - start)}, (v, k) => k + start);
@@ -43,7 +44,7 @@ export class StartMethodicsComponent implements OnInit {
     if (this.validateMethodics()) {
 
       const answers: AnswerQuestion[] = [];
-      for (const answer: Question of Object.keys(this.methodicsStarting.questions)) {
+      for (const answer of this.methodicsStarting.questions) {
          answers.push(
            {
               questionNumber: answer.number,
@@ -55,16 +56,21 @@ export class StartMethodicsComponent implements OnInit {
       const passFact: PassingTest = {
         methodicsId: this.methodicsStarting.id,
         answers: answers
-      }
-      this.methodicsService.sendResultMethodics(passFact, x => this.successMessage = x);
-      this.errorMessage = null;
+      };
+      LoadingPictureController.startLoadingPicture();
+      this.methodicsService.sendResultMethodics(passFact, x => this.errorMessage = x,
+        () => {
+          this.errorMessage = null;
+          LoadingPictureController.stopLoadingPicture();
+          this.router.navigateByUrl('/user/workspace/methodics');
+        });
     } else {
       this.errorMessage = 'Ошибка. Остались неотвеченные вопросы';
     }
   }
   validateMethodics(): boolean {
-    for (const answer: Question in this.methodicsStarting.questions) {
-      if (!answer.resultValue) {
+    for (const answer of this.methodicsStarting.questions) {
+      if (answer.resultValue === null) {
         return false;
       }
     }

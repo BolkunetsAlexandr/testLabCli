@@ -5,6 +5,7 @@ import {HeadersContainer} from '../../utils/headersContainer';
 import {Observable} from 'rxjs/Observable';
 import {StorageKey} from '../../../constants/storage.key';
 import {PassingTest} from '../../../domain/methodics/passingTest';
+import {catchError} from 'rxjs/operators';
 
 @Injectable()
 export class UserMethodicsService {
@@ -19,8 +20,9 @@ export class UserMethodicsService {
     return this.httpClient.get<any>(ApiSetting.API_ENDPOINT_URL + '/methodics/get/' + id, {headers : HeadersContainer.getTokenHeader()});
   }
 
-  public sendResultMethodics(passingFact: PassingTest, responseCatcher?: (x) => any) {
-    return this.httpClient.put(ApiSetting.API_ENDPOINT_URL + '/result/save', passingFact, {headers : HeadersContainer.getTokenAndJsonTypeHeaders()}).subscribe(x => responseCatcher(x));
+  public sendResultMethodics(passingFact: PassingTest, errorCathcer: (x) => any, responseCatcher?: () => any) {
+    return this.httpClient.put(ApiSetting.API_ENDPOINT_URL + '/result/user/save', passingFact, {headers : HeadersContainer.getTokenAndJsonTypeHeaders()})
+      .pipe(catchError(errorCathcer('Ошибка сервера. Попробуйте отправить ещё раз'))).subscribe(responseCatcher());
   }
 
 }
