@@ -11,8 +11,8 @@ export class RouteService {
   public forwardToWorkspace(): void {
     const role = this.userHolder.getRole();
     switch (role) {
-      case 'ROLE_USER' : this.router.navigateByUrl('user/workspace'); break;
-      case 'ROLE_ADMIN' : this.router.navigateByUrl('admin/workspace'); break;
+      case 'ROLE_USER' : this.router.navigateByUrl('user/workspace/mainpage'); break;
+      case 'ROLE_ADMIN' : this.router.navigateByUrl('admin/workspace/mainpage'); break;
       default: break;
     }
 

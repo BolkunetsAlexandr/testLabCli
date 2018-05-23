@@ -17,7 +17,6 @@ export class StartMethodicsComponent implements OnInit {
   private methodicsStarting: MethodicsWithQuestions;
   private answerValues: number[];
   private errorMessage: string;
-  private successMessage: string;
 
   constructor(private router: Router,
               private currentRouterState: ActivatedRoute,
@@ -70,7 +69,7 @@ export class StartMethodicsComponent implements OnInit {
   }
   validateMethodics(): boolean {
     for (const answer of this.methodicsStarting.questions) {
-      if (answer.resultValue === null) {
+      if (answer.resultValue === undefined) {
         return false;
       }
     }
