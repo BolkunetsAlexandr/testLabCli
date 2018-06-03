@@ -8,15 +8,19 @@
       <div class="row">
       <div class="col-md-8 display-5">{{question.number}}) {{question.text}}</div>
       <div class="custom-control custom-radio custom-control-inline" *ngFor="let value of answerValues" id="radioList{{question.id}}{{value}}">
-        <input class="custom-control-input" type="radio" name="inlineRadioOptions{{question.id}}" id="inlineRadio{{question.id}}{{value}}">
-        <label class="custom-control-label" (click)="selectValue(question, value)" for="inlineRadio{{question.id}}{{value}}">{{value}}</label>
+        <input class="custom-control-input" (click)="selectValue(question, value)" [checked]="question.resultValue === value" type="radio" name="inlineRadioOptions{{question.id}}" id="inlineRadio{{question.id}}{{value}}">
+        <label class="custom-control-label" for="inlineRadio{{question.id}}{{value}}">{{value}}</label>
       </div>
       </div>
     </div>
   </div>
-  <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-secondary col-md-4-offset-4">Отменить выполнение</button>
-  <button type="button" class="btn btn-success" (click)="sendMethodics()" >Отправить выполненный тест</button>
-  <label *ngIf="errorMessage" class="alert alert-danger" role="alert">{{errorMessage}}</label>
+  <div class="bg-info clearfix">
+    <div>
+      <button type="button" class="btn btn-success float-right" (click)="sendMethodics()" >Отправить выполненный тест</button>
+      <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-secondary float-right">Отменить выполнение</button>
+      <label *ngIf="errorMessage" class="alert alert-danger float-left" role="alert">{{errorMessage}}</label>
+    </div>
+  </div>
 </div>
 
 <!-- Modal -->
@@ -34,7 +38,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" routerLink="/user/workspace/methodics">Да</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="navigateToListMethodics()">Да</button>
       </div>
     </div>
   </div>

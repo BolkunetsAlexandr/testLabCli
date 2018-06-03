@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { StatesaverService } from './statesaver.service';
+import { StateSaverService } from './statesaver.service';
 
-describe('StatesaverService', () => {
+describe('StateSaverService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [StatesaverService]
+      providers: [StateSaverService]
     });
   });
 
-  it('should be created', inject([StatesaverService], (service: StatesaverService) => {
+  it('should be created', inject([StateSaverService], (service: StateSaverService) => {
     expect(service).toBeTruthy();
   }));
 });

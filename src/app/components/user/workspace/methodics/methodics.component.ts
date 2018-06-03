@@ -3,6 +3,7 @@ import {DescriptionMethodics} from '../../../../domain/methodics/descriptionMeth
 import {UserMethodicsService} from '../../services/usermethodics.service';
 import {Router} from '@angular/router';
 import {LoadingPictureController} from '../../../../services/loadingPictureController';
+import {StateSaverService} from '../../../../services/statesaver.service';
 
 @Component({
   selector: 'app-methodics',
@@ -17,11 +18,16 @@ export class MethodicsComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.getMethodics();
+    const url = StateSaverService.getUrlStateByKey('methodicsTab');
+      if (url === null || url === undefined) {
+      this.getMethodics();
+    } else {
+      this.router.navigateByUrl(url);
+    }
   }
 
   getMethodics() {
-    LoadingPictureController.startLoadingPicture()
+    LoadingPictureController.startLoadingPicture();
     this.methodicsService.getAvailableMethodics().subscribe(x => {
       this.openMethodics = x;
       LoadingPictureController.stopLoadingPicture();

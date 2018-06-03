@@ -15,5 +15,7 @@
 }
 
 #brandName {
+  font-size: 25px;
+  padding: 3px;
   margin: auto;
 }

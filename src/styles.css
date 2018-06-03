@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-body { padding-top: 110px; }
+body { padding-top: 120px; }
+
+p {
+  text-indent: 45px; /* Отступ первой строки в пикселах */
+}
 
 #spinnerball {
   z-index: 3;

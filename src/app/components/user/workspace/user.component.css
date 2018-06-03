@@ -1,3 +1,7 @@
+center {
+  margin: auto;
+}
+
 section {
   padding: 60px 0;
 }
@@ -48,5 +52,7 @@ section .section-title {
 }
 
 #brandName {
+  font-size: 25px;
+  padding: 3px;
   margin: auto;
 }

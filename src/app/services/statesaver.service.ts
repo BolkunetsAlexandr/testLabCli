@@ -1,19 +1,18 @@
-import { Injectable } from '@angular/core';
-import {Router} from '@angular/router';
+export class StateSaverService {
 
-@Injectable()
-export class StatesaverService {
-
-  public saveUrlState(key: string, url: string) {
+  public static saveUrlState(key: string, url: string) {
       localStorage.setItem(key, url);
   }
-  public getUrlStateByKey(key: string): string {
+  public static getUrlStateByKey(key: string): string {
     return localStorage.getItem(key);
   }
-  public saveObjectState(key: string, object: any) {
+  public static saveObjectState(key: string, object: any) {
     localStorage.setItem(key, JSON.stringify(object));
   }
-  public getObjectState(key: string): any {
+  public static getObjectState(key: string): any {
     return JSON.parse(localStorage.getItem(key));
+  }
+  public static removeItem(key: string) {
+    localStorage.removeItem(key);
   }
 }

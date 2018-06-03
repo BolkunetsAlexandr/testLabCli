@@ -17,8 +17,7 @@ import { StartMethodicsComponent } from './components/user/workspace/startmethod
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
-    AdminComponent
+    AuthComponent
   ],
   imports: [
     BrowserModule,
