@@ -7,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminEditPageComponent implements OnInit {
 
+  private startHeader: string;
   private prevHeader: string;
   private header: string;
+  private startBody: string;
   private prevBody: string;
   private body = 'HELLO';
   private display = 'no_display';
@@ -17,6 +19,10 @@ export class AdminEditPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.startHeader = 'Приветик';
+    this.startBody = 'Огого';
+    this.header = this.startHeader;
+    this.body = this.startBody;
   }
 
   changeDisplayStyleHeader() {
@@ -59,5 +65,15 @@ export class AdminEditPageComponent implements OnInit {
   openBodyEditBox() {
     this.changeDisplayStyleBody();
     this.prevBody = this.body;
+  }
+
+  saveNewWelcomeBoards() {
+    this.startHeader = this.header;
+    this.startBody = this.body;
+  }
+
+  revertAllChanges() {
+    this.header = this.startHeader;
+    this.body = this.startBody;
   }
 }

@@ -7,7 +7,7 @@
         </button>
       </h5>
     </div>
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+    <div id="collapseOne" class="collapse {{showEditWelcomePage}}" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
         <div class="jumbotron textapp">
           <button class="btn btn-link right" (click)="openHeaderEditBox()"><i class="fa fa-wrench"></i>Изменить текст заголовка</button>
@@ -22,17 +22,18 @@
           </div>
           <hr class="my-4">
           <button class="btn btn-link right" (click)="openBodyEditBox()"><i class="fa fa-wrench"></i>Изменить текст заголовка</button>
-          <p class="display-5 text-center" *ngIf="header; else emptyBody">{{body}}</p>
-          <ng-template #emptyBody><span class="text-muted">/*Здесь будет текст. */</span></ng-template>
+          <p class="display-5 text-center" *ngIf="body; else emptyBody">{{body}}</p>
+          <ng-template #emptyBody><p class="text-muted">/*Здесь будет текст.*/</p></ng-template>
           <div class="form-group {{displayBody}}" >
             <label for="bodyEditor">Текст</label>
-            <textarea class="form-control" id="bodyEditor" rows="3" [(ngModel)]="body"></textarea>
+            <textarea class="form-control" id="bodyEditor" rows="4" [(ngModel)]="body"></textarea>
             <br/>
             <button type="button" class="btn btn-success" (click)="saveNewBody()">Сохранить</button>
             <button type="button" class="btn btn-secondary" (click)="revertBody()">Отменить</button>
           </div>
           <br/><br/>
-          <p class="text-center display-5">Спасибо, что обратились к нам.</p>
+          <button type="button" class="btn btn-success float-right" (click)="saveNewWelcomeBoards()">Сохранить</button>
+          <button type="button" class="btn btn-secondary float-right" (click)="revertAllChanges()">Отменить</button>
         </div>
       </div>
     </div>
