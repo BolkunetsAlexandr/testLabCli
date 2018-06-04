@@ -12,7 +12,7 @@ export class RouteService {
     const role = this.userHolder.getRole();
     switch (role) {
       case 'ROLE_USER' : this.router.navigateByUrl('user/workspace/mainpage'); break;
-      case 'ROLE_ADMIN' : this.router.navigateByUrl('admin/workspace/mainpage'); break;
+      case 'ROLE_ADMIN' : this.router.navigateByUrl('admin/workspace/editpage'); break;
       default: break;
     }
 

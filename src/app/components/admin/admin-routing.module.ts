@@ -8,22 +8,25 @@ import {MethodicsComponent} from '../user/workspace/methodics/methodics.componen
 import {AdminComponent} from './workspace/admin.component';
 import {UserMethodicsService} from '../user/services/usermethodics.service';
 import {AdminmainpageComponent} from './adminmainpage/adminmainpage.component';
+import {AdminEditPageComponent} from './admineditpage/admineditpage.component';
+import {FormsModule} from '@angular/forms';
 
 const routes: Routes = [
   {path: '', component: AdminComponent, children: [
-    {path: 'mainpage', component : AdminmainpageComponent}
+    {path: 'editpage', component : AdminEditPageComponent}
   ]
 }];
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule.forChild(routes),
   ],
   exports: [
     RouterModule
   ],
-  declarations: [AdminComponent, AdminmainpageComponent],
+  declarations: [AdminComponent, AdminEditPageComponent],
   providers: []
 })
 export class AdminRoutingModule { }
