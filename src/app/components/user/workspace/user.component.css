@@ -56,3 +56,6 @@ section .section-title {
   padding: 3px;
   margin: auto;
 }
+.dropdown-menu {
+  font-family: 'Open Sans', sans-serif;
+}

@@ -14,11 +14,15 @@ import {AdminRoutingModule} from './components/admin/admin-routing.module';
 import {AppRoutingModule} from './/app-routing.module';
 import { StartMethodicsComponent } from './components/user/workspace/startmethodics/startmethodics.component';
 import { AdminEditPageComponent } from './components/admin/admineditpage/admineditpage.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { ContactsComponent } from './components/user/workspace/contacts/contacts.component';
+import { DocumentationComponent } from './components/user/workspace/documentation/documentation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent
+    AuthComponent,
+    ForbiddenComponent
   ],
   imports: [
     BrowserModule,

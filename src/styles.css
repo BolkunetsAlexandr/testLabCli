@@ -1,8 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-body { padding-top: 120px; }
+body {
+  padding-top: 120px;
+  background-color: #e9ecef;
+}
 
 p {
   text-indent: 45px; /* Отступ первой строки в пикселах */
+}
+
+.textapp {
+  font-family: 'Open Sans', sans-serif;
 }
 
 #spinnerball {
