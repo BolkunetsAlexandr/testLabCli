@@ -11,7 +11,13 @@ export class DocumentationComponent implements OnInit {
   files: FileDescription[] = [
     { downloadUrl: 'http://www.axmag.com/download/pdfurl-guide.pdf',
       expansion: 'pdf',
-      name: 'document'
+      name: 'Соглашение сторон.pdf',
+      description: 'Документ, описывающий основные права и обязанности сторон'
+    },
+    { downloadUrl: 'http://oochechersk.gov.by/sites/default/files/procedura_provedeniya_i_pravila_povedeniya_uchastnika_.doc',
+      expansion: 'word',
+      name: 'Согласие на обработку данных.doc',
+      description: 'ВРАКИ ВРАКИ'
     }
   ];
 
