@@ -1,7 +1,4 @@
 <div class="jumbotron textapp">
-  <p class="display-5 text-center">
-    Можете посмотреть докуметацию:
-  </p>
   <div class="container">
     <table class="table table-inverse">
       <thead>
@@ -15,7 +12,7 @@
       <tr *ngFor="let file of files; let i = index">
         <th scope="row">{{i+1}}</th>
         <td class="text-center">{{file.description}}</td>
-        <td class="text-center"><a href='{{file.downloadUrl}}' download='{{file.name}}'><i class="fa fa-file-{{file.expansion}}-o"></i>{{file.name}}</a></td>
+        <td class="text-center"><a href='{{file.downloadUrl}}' download='{{file.name}}'><i class="fa fa-file-{{file.expansion}}-o"></i> {{file.name}}</a></td>
       </tr>
       </tbody>
     </table>

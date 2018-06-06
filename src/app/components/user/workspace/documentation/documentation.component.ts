@@ -18,6 +18,11 @@ export class DocumentationComponent implements OnInit {
       expansion: 'word',
       name: 'Согласие на обработку данных.doc',
       description: 'ВРАКИ ВРАКИ'
+    },
+    { downloadUrl: 'http://oochechersk.gov.by/sites/default/files/procedura_provedeniya_i_pravila_povedeniya_uchastnika_.doc',
+      expansion: 'archive',
+      name: 'Согласие на обработку данных.doc',
+      description: 'ВРАКИ ВРАКИ'
     }
   ];
 
